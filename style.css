@@ -434,7 +434,7 @@ body { min-height: 100vh; }
   box-shadow:0 2px 13px -8px #000;
   border: 2px solid var(--celeste);
 }
-}
+
 .testimonio blockquote {
   font-family: 'Nunito', Arial, sans-serif;
   font-style: italic;
@@ -470,11 +470,11 @@ footer {
 }
 .rrss a {margin-right: 7px; margin-top: 8px; display: inline-block;}
 .rrss img {
-  /* Aumentar temporalmente el tamaño para asegurar la visibilidad */
-  width: 50px; 
-  height: 50px; 
-  opacity: 1; /* Asegurar que no sean transparentes */
-  /* ... resto del código ... */
+  width: 32px; /* Tamaño final y correcto */
+  height: 32px; /* Tamaño final y correcto */
+  opacity: 0.82; 
+  transition: opacity .23s; 
+  border-radius: 7px;
 }
 .rrss img:hover { opacity: 1;}
 .footer-hashtags {
