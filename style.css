@@ -145,7 +145,6 @@ body { min-height: 100vh; }
 }
 .btn-primary:hover { background: var(--amarillo); color: var(--gris);}
 .store-row { display: flex; gap: 2vw; margin-bottom: 1.2vw;}
-/* ESTO DEBES PEGAR EN style.css */
 .store-row .store-btn img {
   box-shadow: none; 
   height: 140px !important; 
@@ -234,15 +233,14 @@ body { min-height: 100vh; }
   font-family: 'Nunito', Arial, sans-serif;
   display: flex; flex-direction: column; align-items: center;
 }
-/* --- IMÁGENES EN COLUMNAS (Movilidad y Conductores) --- */
 .img-circle {
-  width: 110px !important; /* Añadir !important si es necesario */
-  height: 110px !important; /* Añadir !important si es necesario */
-  border-radius: 55px;
-  object-fit: cover;
-  margin-bottom: .7em;
-  box-shadow:0 2px 13px -9px #000;
-  border: 2.5px solid var(--celeste);
+  width: 110px !important;
+  height: 110px !important;
+  border-radius: 55px;
+  object-fit: cover;
+  margin-bottom: .7em;
+  box-shadow:0 2px 13px -9px #000;
+  border: 2.5px solid var(--celeste);
 }
 .columnas h3 {
   margin-top: 0; margin-bottom: .2em;
@@ -259,89 +257,53 @@ body { min-height: 100vh; }
   text-indent: -1em;
   line-height: 1.33;
 }
-/* --- Estilos para la sección de Beneficios con Imagen --- */
 
-/* Contenedor principal de las dos columnas */
 .beneficios-layout {
   display: flex;
-  flex-wrap: wrap; /* Permite que las columnas se apilen en pantallas pequeñas */
-  gap: 3vw; /* Espacio entre las columnas */
-  align-items: center; /* Centra verticalmente las columnas */
-  justify-content: center; /* Centra horizontalmente si hay espacio */
-  padding-top: 1.5vw; /* Pequeño espacio superior para separar del título */
+  flex-wrap: wrap;
+  gap: 3vw;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.5vw;
 }
 
-/* Columna de la lista de beneficios */
 .beneficios-lista-columna {
-  flex: 1 1 45%; /* Ocupa al menos el 45% del ancho, se encoge si no hay espacio */
-  min-width: 300px; /* Ancho mínimo para la lista */
-  max-width: 600px; /* Ancho máximo para que no se extienda demasiado */
+  flex: 1 1 45%;
+  min-width: 300px;
+  max-width: 600px;
 }
 
-/* Columna de la imagen */
 .beneficios-imagen-columna {
-  flex: 1 1 45%; /* Ocupa al menos el 45% del ancho, se encoge si no hay espacio */
-  min-width: 300px; /* Ancho mínimo para la imagen */
-  max-width: 500px; /* Ancho máximo para la imagen */
-  display: flex; /* Para centrar la imagen dentro de su columna */
+  flex: 1 1 45%;
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
   justify-content: center;
   align-items: center;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilo para la imagen misma (bordes suaves y sombra) */
 .imagen-beneficios-estilo {
-  width: 100%; /* La imagen ocupa el 100% de su contenedor */
-  height: auto; /* Mantiene la proporción */
-  border-radius: 25px; /* Bordes suaves, ¡ajusta este valor si quieres más o menos! */
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2); /* Sombra elegante */
-  display: block; /* Elimina espacio extra debajo de la imagen */
-  object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-/* --- Responsive para pantallas más pequeñas --- */
 @media (max-width: 768px) {
   .beneficios-layout {
-    flex-direction: column; /* Apila las columnas en móviles */
-    gap: 5vw; /* Más espacio vertical entre la lista y la imagen */
+    flex-direction: column;
+    gap: 5vw;
   }
-
-  .beneficios-lista-columna,
-/* --- Ajustes para la sección de Beneficios con Imagen --- */
-
-/* Columna de la imagen */
-.beneficios-imagen-columna {
-  flex: 1 1 45%; 
-  min-width: 300px; 
-  max-width: 500px; 
-  display: flex; 
-  justify-content: center;
-  align-items: center;
-  /* IMPORTANTE: Añadir una altura fija o máxima para el contenedor si la imagen es el único contenido */
-  /* Si la imagen es muy ancha, esto la ayudará a no desbordarse */
-  height: 350px; /* <--- AJUSTE: Altura fija para el contenedor */
-  overflow: hidden; /* <--- OCULTA cualquier parte que se desborde */
-  border-radius: 25px; /* Para que el recorte sea suave con la imagen */
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2); /* La sombra ahora va al contenedor */
-}
-
-/* Estilo para la imagen misma */
-.imagen-beneficios-estilo {
-  width: 100%; 
-  height: 100%; /* <--- AJUSTE: La imagen ocupa el 100% de la altura de su padre */
-  object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
-  display: block; 
-  /* Los bordes y la sombra ahora se aplican al contenedor para un mejor recorte */
-  border-radius: 0; /* <--- Eliminar aquí ya que el contenedor lo tiene */
-  box-shadow: none; /* <--- Eliminar aquí ya que el contenedor lo tiene */
-}
-
-/* --- Responsive para pantallas más pequeñas --- */
-@media (max-width: 768px) {
   .beneficios-imagen-columna {
-    height: 250px; /* <--- AJUSTE: Altura más pequeña en móviles */
-    max-width: 90%; /* Ajuste para que el contenedor no sea demasiado grande */
+    height: 250px;
+    max-width: 90%;
   }
 }
+
 .faq-section { background: #fff9ef;}
 .faq-list { list-style: none; margin: 0; padding: 0;}
 .faq-list li {
@@ -379,28 +341,7 @@ body { min-height: 100vh; }
   padding: .09em .57em;
   border-radius: 4px;
 }
-/* Esto asegura que solo el NÚMERO dentro de la tarjeta esté oculto */
-.stat-card .stat-number {
-  height: 0; /* Oculta el número */
-  opacity: 0;
-  overflow: hidden;
-  transition: height 0.4s ease-out, opacity 0.4s ease-out; 
-}
 
-/* Esto asegura que la CARD tenga espacio visible para el texto */
-.stat-card {
-  /* ... (mantén tus estilos originales aquí) ... */
-  /* Asegúrate de que tenga un padding suficiente para mostrar el stat-caption */
-  padding: 1vw .7vw; /* Tu valor original */
-}
-
-/* Clase que MUESTRA el número al hacer clic */
-.stat-card.active .stat-number {
-  height: 2.05rem; /* El tamaño de fuente de tu número */
-  opacity: 1;
-}
-
-/* Testimonios */
 .testimonios-section {
   background: #fff;
   padding: 3vw 0 2.5vw 0;
@@ -425,15 +366,14 @@ body { min-height: 100vh; }
   display: none;
 }
 .testimonio:first-child { display:block;}
-/* --- IMÁGENES DE TESTIMONIOS --- */
 .img-testimonio {
-  width: 100px; /* Tamaño del círculo: 100px */
-  height: 100px; /* Tamaño del círculo: 100px */
-  border-radius: 50px; /* La mitad del tamaño para ser perfectamente circular */
-  object-fit: cover; /* MUY IMPORTANTE: Recorta la imagen para que llene el espacio (100x100px) sin estirarse */
-  margin-bottom: 1em;
-  box-shadow:0 2px 13px -8px #000;
-  border: 2px solid var(--celeste);
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  object-fit: cover;
+  margin-bottom: 1em;
+  box-shadow:0 2px 13px -8px #000;
+  border: 2px solid var(--celeste);
 }
 
 .testimonio blockquote {
@@ -450,7 +390,6 @@ body { min-height: 100vh; }
   font-weight: bold;
 }
 
-/* Footer */
 footer {
   background: #f8f8ff;
   color: #555;
@@ -470,13 +409,12 @@ footer {
   gap: 1.6em;
 }
 .rrss a {margin-right: 7px; margin-top: 8px; display: inline-block;}
-/* --- ÍCONOS DE REDES SOCIALES EN EL FOOTER --- */
 .rrss img {
-  width: 32px; /* Tamaño final y correcto */
-  height: 32px; /* Tamaño final y correcto */
-  opacity: 0.82; 
-  transition: opacity .23s; 
-  border-radius: 7px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.82;
+  transition: opacity .23s;
+  border-radius: 7px;
 }
 .rrss img:hover { opacity: 1;}
 .footer-hashtags {
@@ -487,7 +425,6 @@ footer {
 }
 .footer-right { font-size: .97em; color: #888; }
 
-/* Animaciones suaves (fade in up) */
 .fadein-up {
   opacity: 0;
   transform: translateY(18px);
@@ -502,7 +439,6 @@ footer {
   to {opacity:1; transform: translateY(0);}
 }
 
-/* Responsive design */
 @media (max-width: 950px) {
   .navbar-menu { gap: .75vw; font-size: .96rem; }
   .hero-section { flex-direction: column;}
@@ -537,7 +473,16 @@ footer {
 @media (max-width: 500px) {
   .howto-steps { flex-direction: column; align-items: center;}
   .columnas { flex-direction: column;}
-
 }
 
+footer .rrss img {
+  width: 45px !important;
+  height: 45px !important;
+}
 
+.img-testimonio {
+  width: 220px;
+  max-width: 80%;
+  height: auto;
+  border-radius: 20px;
+}
