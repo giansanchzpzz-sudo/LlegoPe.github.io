@@ -295,7 +295,16 @@
         });
       });
     });
-    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Esto anima los números de las estadísticas al cargar la página
+        document.querySelectorAll('.stat-number').forEach(function(el) {
+            let objetivo = parseInt(el.getAttribute('data-valor'), 10);
+            if (!isNaN(objetivo)) {
+                // Un pequeño retraso para que no animen todos a la vez
+                setTimeout(() => animateNumber(el, objetivo, 2100 + Math.random() * 700), 100); 
+            }
+        });
+    });    
     // Testimonios animados automáticos
     document.addEventListener("DOMContentLoaded", function() {
       const carrusel = document.querySelector('.testimonios-carrusel');
