@@ -426,13 +426,14 @@ body { min-height: 100vh; }
 }
 .testimonio:first-child { display:block;}
 .img-testimonio {
-  width: 120px; /* <--- AUMENTADO */
-  height: 120px; /* <--- AUMENTADO */
-  border-radius: 70px; /* <--- AJUSTADO (85/2) */
-  object-fit: cover;
+  width: 100px;
+  height: 100px; 
+  border-radius: 50px; /* Hace que el recorte sea perfectamente circular */
+  object-fit: cover; /* Recorta la imagen para que llene el espacio (100x100px) sin estirarse */
   margin-bottom: 1em;
   box-shadow:0 2px 13px -8px #000;
   border: 2px solid var(--celeste);
+}
 }
 .testimonio blockquote {
   font-family: 'Nunito', Arial, sans-serif;
