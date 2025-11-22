@@ -1,130 +1,164 @@
-// script.js - Versión optimizada para GitHub Pages
 document.addEventListener('DOMContentLoaded', function() {
-    initApp();
-});
-
-function initApp() {
-    // 1. Animaciones de entrada
-    const fadeElements = document.querySelectorAll('.fadein-up');
-    fadeElements.forEach((el, i) => {
-        setTimeout(() => el.classList.add('visible'), 120 + i * 120);
-    });
-
-    // 2. Estadísticas con Intersection Observer
+    // 1. Animación de aparición de elementos
+    animateFadeIn();
+    
+    // 2. Configurar estadísticas
     setupStatistics();
     
-    // 3. Carrusel de testimonios
+    // 3. Configurar carrusel de testimonios
     setupTestimonials();
     
-    // 4. Smooth scroll para navegación
+    // 4. Smooth scroll para navegación interna
     setupSmoothScroll();
-}
+    
+    // 5. Tracking para redes sociales (opcional)
+    setupSocialMediaTracking();
+});
 
-function setupStatistics() {
-    const statNumbers = document.querySelectorAll('.stat-number');
-    
-    // Usar Intersection Observer para animar cuando son visibles
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const numberEl = entry.target;
-                const target = parseInt(numberEl.getAttribute('data-valor'), 10);
-                
-                if (!isNaN(target)) {
-                    animateCounter(numberEl, target, 2000);
-                }
-                observer.unobserve(numberEl);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    statNumbers.forEach(number => observer.observe(number));
+function animateFadeIn() {
+    const elementsToFade = document.querySelectorAll('.fadein-up');
+    elementsToFade.forEach(function(element, index) {
+        setTimeout(() => {
+            element.classList.add('visible');
+        }, 120 + index * 120);
+    });
 }
 
 function animateCounter(element, target, duration = 2000) {
-    let current = 0;
-    const increment = target / (duration / 60); // 60fps
+    let start = 0;
     const isLarge = target > 10000;
+    const increment = target / (duration / 16);
+    let current = 0;
     
     function update() {
         current += increment;
-        if (current >= target) {
-            element.textContent = isLarge ? target.toLocaleString('es-PE') : target;
-            return;
-        }
+        if (current > target) current = target;
         
         element.textContent = isLarge ? 
             Math.floor(current).toLocaleString('es-PE') : 
             Math.floor(current);
-        
-        requestAnimationFrame(update);
+            
+        if (current < target) {
+            requestAnimationFrame(update);
+        }
     }
     update();
 }
 
+function setupStatistics() {
+    const statCards = document.querySelectorAll('.stat-card');
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const numberElement = entry.target.querySelector('.stat-number');
+                const targetValue = parseInt(numberElement.getAttribute('data-valor'), 10);
+                
+                if (!isNaN(targetValue)) {
+                    animateCounter(numberElement, targetValue, 1800);
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    statCards.forEach(card => {
+        observer.observe(card);
+    });
+}
+
 function setupTestimonials() {
-    const testimonios = document.querySelectorAll('.testimonio');
-    if (testimonios.length <= 1) return;
+    const carousel = document.querySelector('.testimonios-carrusel');
+    const testimonials = document.querySelectorAll('.testimonio');
+    
+    if (!carousel || testimonials.length < 2) return;
     
     let currentIndex = 0;
-    let intervalId;
+    let carouselInterval;
     
-    function showTestimonio(index) {
-        testimonios.forEach(t => t.style.display = 'none');
-        testimonios[index].style.display = 'block';
+    function showTestimonial(index) {
+        testimonials.forEach(testimonial => {
+            testimonial.style.display = 'none';
+        });
+        
+        if (testimonials[index]) {
+            testimonials[index].style.display = 'block';
+        }
+    }
+    
+    function nextTestimonial() {
+        currentIndex = (currentIndex + 1) % testimonials.length;
+        showTestimonial(currentIndex);
     }
     
     function startCarousel() {
-        intervalId = setInterval(() => {
-            currentIndex = (currentIndex + 1) % testimonios.length;
-            showTestimonio(currentIndex);
-        }, 5000);
+        carouselInterval = setInterval(nextTestimonial, 5000);
     }
     
     function stopCarousel() {
-        clearInterval(intervalId);
+        clearInterval(carouselInterval);
     }
     
-    // Iniciar carrusel
-    showTestimonio(currentIndex);
+    // Inicializar
+    showTestimonial(currentIndex);
     startCarousel();
     
     // Pausar al interactuar
-    const carrusel = document.querySelector('.testimonios-carrusel');
-    if (carrusel) {
-        carrusel.addEventListener('mouseenter', stopCarousel);
-        carrusel.addEventListener('mouseleave', startCarousel);
-    }
+    carousel.addEventListener('mouseenter', stopCarousel);
+    carousel.addEventListener('mouseleave', startCarousel);
+    carousel.addEventListener('touchstart', stopCarousel);
+    carousel.addEventListener('touchend', startCarousel);
 }
 
 function setupSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
             
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            // Solo aplicar a enlaces internos que no sean redes sociales
+            if (href.startsWith('#') && href !== '#' && !this.parentElement.classList.contains('rrss')) {
+                e.preventDefault();
+                
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop - 80;
+                    
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Actualizar URL sin recargar
+                    history.pushState(null, null, href);
+                }
             }
         });
     });
 }
 
-// Manejo de errores para imágenes (útil para GitHub Pages)
-function handleImageErrors() {
-    document.querySelectorAll('img').forEach(img => {
-        img.addEventListener('error', function() {
-            console.warn('Error loading image:', this.src);
-            this.style.display = 'none';
+function setupSocialMediaTracking() {
+    const socialLinks = document.querySelectorAll('.rrss a');
+    
+    socialLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Los enlaces ya tienen target="_blank", así que se abren normalmente
+            console.log('Red social clickeada:', this.href);
+            
+            // Aquí puedes agregar tu código de analytics
+            // Ejemplo para Google Analytics 4:
+            /*
+            gtag('event', 'click', {
+                'event_category': 'Social Media',
+                'event_label': this.href,
+                'transport_type': 'beacon'
+            });
+            */
         });
     });
 }
-
-// Llamar al manejo de errores de imágenes
-handleImageErrors();
