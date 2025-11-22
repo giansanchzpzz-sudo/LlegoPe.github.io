@@ -306,14 +306,40 @@ body { min-height: 100vh; }
   }
 
   .beneficios-lista-columna,
-  .beneficios-imagen-columna {
-    flex: 1 1 100%; /* Ocupan todo el ancho disponible */
-    max-width: 100%; /* Sin límite de ancho en móviles */
-  }
+/* --- Ajustes para la sección de Beneficios con Imagen --- */
 
-  .imagen-beneficios-estilo {
-    padding: 0 2vw; /* Pequeño padding para que la imagen no toque los bordes */
-    max-width: 90%; /* La imagen no ocupa el 100% del ancho para un mejor look */
+/* Columna de la imagen */
+.beneficios-imagen-columna {
+  flex: 1 1 45%; 
+  min-width: 300px; 
+  max-width: 500px; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  /* IMPORTANTE: Añadir una altura fija o máxima para el contenedor si la imagen es el único contenido */
+  /* Si la imagen es muy ancha, esto la ayudará a no desbordarse */
+  height: 350px; /* <--- AJUSTE: Altura fija para el contenedor */
+  overflow: hidden; /* <--- OCULTA cualquier parte que se desborde */
+  border-radius: 25px; /* Para que el recorte sea suave con la imagen */
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2); /* La sombra ahora va al contenedor */
+}
+
+/* Estilo para la imagen misma */
+.imagen-beneficios-estilo {
+  width: 100%; 
+  height: 100%; /* <--- AJUSTE: La imagen ocupa el 100% de la altura de su padre */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+  display: block; 
+  /* Los bordes y la sombra ahora se aplican al contenedor para un mejor recorte */
+  border-radius: 0; /* <--- Eliminar aquí ya que el contenedor lo tiene */
+  box-shadow: none; /* <--- Eliminar aquí ya que el contenedor lo tiene */
+}
+
+/* --- Responsive para pantallas más pequeñas --- */
+@media (max-width: 768px) {
+  .beneficios-imagen-columna {
+    height: 250px; /* <--- AJUSTE: Altura más pequeña en móviles */
+    max-width: 90%; /* Ajuste para que el contenedor no sea demasiado grande */
   }
 }
 .faq-section { background: #fff9ef;}
