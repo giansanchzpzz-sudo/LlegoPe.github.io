@@ -269,14 +269,32 @@
       }
       update();
     }
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.stat-number').forEach(function(el) {
-        let objetivo = parseInt(el.getAttribute('data-valor'), 10);
-        if (!isNaN(objetivo)) {
-          animateNumber(el, objetivo, 2100 + Math.random() * 700);
-        }
+   
+    // Función para mostrar/ocultar el número al hacer clic
+    document.addEventListener("DOMContentLoaded", function() {
+      const statCards = document.querySelectorAll('.stat-card');
+
+      statCards.forEach(card => {
+        // Añadir un evento de clic a cada tarjeta
+        card.addEventListener('click', function() {
+          // Toggle: si tiene la clase 'active', la quita; si no la tiene, la pone.
+          this.classList.toggle('active');
+
+          // (Opcional) Si la animamos, debemos re-animar el conteo
+          if (this.classList.contains('active')) {
+              // Si el usuario hace clic y la activa, forzamos la animación
+              const numberEl = this.querySelector('.stat-number');
+              const target = parseInt(numberEl.getAttribute('data-valor'), 10);
+              // Reiniciamos a cero antes de animar (opcional, para que siempre cuente)
+              numberEl.textContent = '0'; 
+              if (!isNaN(target)) {
+                 animateNumber(numberEl, target, 1500); // 1.5s de duración
+              }
+          }
+        });
       });
     });
+    
     // Testimonios animados automáticos
     document.addEventListener("DOMContentLoaded", function() {
       const carrusel = document.querySelector('.testimonios-carrusel');
