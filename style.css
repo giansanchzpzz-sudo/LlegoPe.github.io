@@ -296,20 +296,24 @@ body { min-height: 100vh; }
   padding: .09em .57em;
   border-radius: 4px;
 }
-/* Nuevo CSS para ocultar el número por defecto */
+/* Esto asegura que solo el NÚMERO dentro de la tarjeta esté oculto */
 .stat-card .stat-number {
-  /* Establece la altura a 0 y oculta el contenido */
-  height: 0; 
+  height: 0; /* Oculta el número */
   opacity: 0;
   overflow: hidden;
-  /* Transición suave para que la aparición sea animada */
   transition: height 0.4s ease-out, opacity 0.4s ease-out; 
 }
 
-/* CLASE QUE SE AÑADIRÁ CON JAVASCRIPT AL HACER CLIC */
+/* Esto asegura que la CARD tenga espacio visible para el texto */
+.stat-card {
+  /* ... (mantén tus estilos originales aquí) ... */
+  /* Asegúrate de que tenga un padding suficiente para mostrar el stat-caption */
+  padding: 1vw .7vw; /* Tu valor original */
+}
+
+/* Clase que MUESTRA el número al hacer clic */
 .stat-card.active .stat-number {
-  /* Al hacer clic, le damos la altura real para mostrarlo */
-  height: 2.05rem; /* Ajusta este valor al tamaño de fuente de .stat-number */
+  height: 2.05rem; /* El tamaño de fuente de tu número */
   opacity: 1;
 }
 
