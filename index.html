@@ -1,164 +1,145 @@
+// script.js - Versión segura para GitHub Pages
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Animación de aparición de elementos
-    animateFadeIn();
+    console.log('LlegoPe - Inicializando aplicación...');
     
-    // 2. Configurar estadísticas
-    setupStatistics();
+    // 1. Animaciones de entrada básicas
+    const fadeElements = document.querySelectorAll('.fadein-up');
+    fadeElements.forEach((el, i) => {
+        setTimeout(() => {
+            if (el && el.classList) {
+                el.classList.add('visible');
+            }
+        }, 120 + i * 120);
+    });
+
+    // 2. Estadísticas simples (sin Intersection Observer)
+    setupSimpleStatistics();
     
-    // 3. Configurar carrusel de testimonios
-    setupTestimonials();
+    // 3. Carrusel básico
+    setupSimpleTestimonials();
     
-    // 4. Smooth scroll para navegación interna
-    setupSmoothScroll();
+    // 4. Smooth scroll solo si los elementos existen
+    setupSafeSmoothScroll();
     
-    // 5. Tracking para redes sociales (opcional)
-    setupSocialMediaTracking();
+    console.log('LlegoPe - Aplicación inicializada correctamente');
 });
 
-function animateFadeIn() {
-    const elementsToFade = document.querySelectorAll('.fadein-up');
-    elementsToFade.forEach(function(element, index) {
-        setTimeout(() => {
-            element.classList.add('visible');
-        }, 120 + index * 120);
-    });
+function setupSimpleStatistics() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    // Animación simple después de un delay
+    setTimeout(() => {
+        statNumbers.forEach((numberEl, index) => {
+            if (numberEl) {
+                const target = parseInt(numberEl.getAttribute('data-valor'), 10);
+                if (!isNaN(target)) {
+                    // Pequeño delay escalonado
+                    setTimeout(() => {
+                        animateSimpleCounter(numberEl, target, 1500);
+                    }, index * 400);
+                }
+            }
+        });
+    }, 1000);
 }
 
-function animateCounter(element, target, duration = 2000) {
-    let start = 0;
-    const isLarge = target > 10000;
-    const increment = target / (duration / 16);
-    let current = 0;
+function animateSimpleCounter(element, target, duration = 1500) {
+    if (!element) return;
     
-    function update() {
+    let current = 0;
+    const steps = 60; // Número de pasos
+    const increment = target / steps;
+    const stepTime = duration / steps;
+    const isLarge = target > 10000;
+    
+    let step = 0;
+    const timer = setInterval(() => {
         current += increment;
-        if (current > target) current = target;
+        step++;
+        
+        if (step >= steps) {
+            current = target;
+            clearInterval(timer);
+        }
         
         element.textContent = isLarge ? 
             Math.floor(current).toLocaleString('es-PE') : 
             Math.floor(current);
-            
-        if (current < target) {
-            requestAnimationFrame(update);
-        }
+    }, stepTime);
+}
+
+function setupSimpleTestimonials() {
+    const testimonios = document.querySelectorAll('.testimonio');
+    
+    // Solo si hay más de un testimonio
+    if (!testimonios || testimonios.length <= 1) {
+        console.log('Solo hay un testimonio o ninguno');
+        return;
     }
-    update();
-}
-
-function setupStatistics() {
-    const statCards = document.querySelectorAll('.stat-card');
-    const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px 0px -100px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const numberElement = entry.target.querySelector('.stat-number');
-                const targetValue = parseInt(numberElement.getAttribute('data-valor'), 10);
-                
-                if (!isNaN(targetValue)) {
-                    animateCounter(numberElement, targetValue, 1800);
-                }
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-    
-    statCards.forEach(card => {
-        observer.observe(card);
-    });
-}
-
-function setupTestimonials() {
-    const carousel = document.querySelector('.testimonios-carrusel');
-    const testimonials = document.querySelectorAll('.testimonio');
-    
-    if (!carousel || testimonials.length < 2) return;
     
     let currentIndex = 0;
-    let carouselInterval;
     
-    function showTestimonial(index) {
-        testimonials.forEach(testimonial => {
-            testimonial.style.display = 'none';
-        });
-        
-        if (testimonials[index]) {
-            testimonials[index].style.display = 'block';
-        }
-    }
-    
-    function nextTestimonial() {
-        currentIndex = (currentIndex + 1) % testimonials.length;
-        showTestimonial(currentIndex);
-    }
-    
-    function startCarousel() {
-        carouselInterval = setInterval(nextTestimonial, 5000);
-    }
-    
-    function stopCarousel() {
-        clearInterval(carouselInterval);
-    }
-    
-    // Inicializar
-    showTestimonial(currentIndex);
-    startCarousel();
-    
-    // Pausar al interactuar
-    carousel.addEventListener('mouseenter', stopCarousel);
-    carousel.addEventListener('mouseleave', startCarousel);
-    carousel.addEventListener('touchstart', stopCarousel);
-    carousel.addEventListener('touchend', startCarousel);
-}
-
-function setupSmoothScroll() {
-    const navLinks = document.querySelectorAll('a[href^="#"]');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            
-            // Solo aplicar a enlaces internos que no sean redes sociales
-            if (href.startsWith('#') && href !== '#' && !this.parentElement.classList.contains('rrss')) {
-                e.preventDefault();
-                
-                const targetElement = document.querySelector(href);
-                if (targetElement) {
-                    const offsetTop = targetElement.offsetTop - 80;
-                    
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Actualizar URL sin recargar
-                    history.pushState(null, null, href);
-                }
+    // Función para mostrar testimonio
+    function showTestimonio(index) {
+        testimonios.forEach((t, i) => {
+            if (t.style) {
+                t.style.display = i === index ? 'block' : 'none';
             }
         });
+    }
+    
+    // Inicializar mostrando el primero
+    showTestimonio(currentIndex);
+    
+    // Cambiar cada 5 segundos
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % testimonios.length;
+        showTestimonio(currentIndex);
+    }, 5000);
+}
+
+function setupSafeSmoothScroll() {
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    
+    navLinks.forEach(anchor => {
+        if (anchor) {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                
+                // Solo procesar enlaces internos que no sean # solo
+                if (targetId && targetId !== '#' && targetId.startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Scroll suave nativo
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+                // Los enlaces externos (redes sociales) se manejan normalmente
+            });
+        }
     });
 }
 
-function setupSocialMediaTracking() {
-    const socialLinks = document.querySelectorAll('.rrss a');
-    
-    socialLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Los enlaces ya tienen target="_blank", así que se abren normalmente
-            console.log('Red social clickeada:', this.href);
-            
-            // Aquí puedes agregar tu código de analytics
-            // Ejemplo para Google Analytics 4:
-            /*
-            gtag('event', 'click', {
-                'event_category': 'Social Media',
-                'event_label': this.href,
-                'transport_type': 'beacon'
+// Manejo de errores mejorado
+function handleImageErrors() {
+    document.querySelectorAll('img').forEach(img => {
+        if (img) {
+            img.addEventListener('error', function() {
+                console.warn('Error cargando imagen:', this.src);
+                // No ocultar la imagen, solo mostrar advertencia
             });
-            */
-        });
+            
+            img.addEventListener('load', function() {
+                console.log('Imagen cargada correctamente:', this.src);
+            });
+        }
     });
 }
+
+// Llamar al manejo de errores
+handleImageErrors();
