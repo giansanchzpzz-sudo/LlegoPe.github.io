@@ -543,3 +543,11 @@ footer .rrss img {
   width: 45px !important;
   height: 45px !important;
 }
+
+/* Ajuste de tamaño para imágenes de testimonios */
+.img-testimonio {
+  width: 220px;      /* Reduce ancho */
+  max-width: 80%;    /* Evita que crezca demasiado */
+  height: auto;
+  border-radius: 20px;
+}
