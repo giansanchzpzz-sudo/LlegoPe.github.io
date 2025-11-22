@@ -323,9 +323,9 @@ body { min-height: 100vh; }
 }
 .testimonio:first-child { display:block;}
 .img-testimonio {
-  width: 85px; /* <--- AUMENTADO */
-  height: 85px; /* <--- AUMENTADO */
-  border-radius: 42.5px; /* <--- AJUSTADO (85/2) */
+  width: 120px; /* <--- AUMENTADO */
+  height: 120px; /* <--- AUMENTADO */
+  border-radius: 70px; /* <--- AJUSTADO (85/2) */
   object-fit: cover;
   margin-bottom: 1em;
   box-shadow:0 2px 13px -8px #000;
