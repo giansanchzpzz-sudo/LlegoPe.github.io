@@ -1,153 +1,542 @@
-/* ================================
-   PALETA DE COLORES
-================================ */
 :root {
-  --color-principal: #ff3131;
-  --color-amarillo: #fcd24f;
-  --color-celeste: #5ce1e6;
+  --celeste: #5ce1e6;
+  --rojo: #ff3131;
+  --amarillo: #fcd24f;
   --gris: #222627;
-  --gris-suave: #50526e;
   --blanco: #fafafa;
+  --gris-suave: #50526e;
 }
 
-/* ================================
-   ESTILOS GENERALES
-================================ */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #fff5e7;
+html, body {
+  margin: 0; padding: 0;
+  width: 100%; height: 100%;
+  background: var(--blanco);
+  font-family: 'Nunito', Arial, sans-serif;
   color: var(--gris);
+  box-sizing: border-box;
 }
+body { min-height: 100vh; }
 
-section {
-  padding: 60px 10%;
+.main-header {
+  width: 100%;
+  padding-top: 10px;
+  background: #fff;
+  border-bottom: 1.5px solid #ececec;
+  position: relative;
+  z-index: 3;
 }
-
-/* ================================
-   TITULOS
-================================ */
-h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: left;
-  margin-bottom: 40px;
-  color: var(--color-principal);
-}
-
-/* ================================
-   TESTIMONIOS
-================================ */
-.testimonios-section {
-  text-align: center;
-}
-
-.testimonio {
-  margin-bottom: 60px;
-}
-
-.img-testimonio {
-  width: 250px;
-  max-width: 90%;
-  border-radius: 25px;
-  display: block;
-  margin: auto;
-  object-fit: cover;
-}
-
-.nombre-testimonio {
-  font-size: 0.8rem;
-  opacity: 0.6;
-  margin-top: 5px;
-}
-
-/* ================================
-   FAQ
-================================ */
-.faq-section {
-  background: #fff9ef;
-  padding: 40px 10%;
-  border-radius: 10px;
-}
-
-.faq-section ul {
-  font-size: 0.9rem;
-  line-height: 1.8rem;
-}
-
-/* ================================
-   FOOTER & CONTACTO
-================================ */
-footer {
-  text-align: center;
-  padding: 40px 10%;
-  background-color: #ffffff;
-  color: #333;
-}
-
-.rrss {
+.navbar {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 3vw;
+}
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-lgpe {
+  height: 38px;
+  border-radius: 8px;
+  background: #fff;
+  margin-right: 9px;
+}
+.brand-name {
+  font-family: 'Nunito', Arial, sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--gris);
+  letter-spacing: -1.5px;
+}
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 1.55vw;
+  margin: 0; padding: 0;
+}
+.navbar-menu li a {
+  text-decoration: none;
+  font-family: 'Nunito', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.03rem;
+  color: #19191a;
+  border-radius: 8px;
+  padding: 0.18em .78em;
+  transition: color .18s, background .18s;
+}
+.navbar-menu li a:hover {
+  color: var(--celeste);
+  background: #eafffa;
+}
+.login-btn {
+  font-family: 'Nunito', Arial, sans-serif;
+  padding: 0.53em 1.7em;
+  font-size: 1rem;
+  background: var(--celeste);
+  color: var(--gris);
+  border-radius: 22px;
+  font-weight: 900;
+  text-decoration: none;
+  border: none;
+  margin-left: 10px;
+  box-shadow: 0 2px 9px -7px #5ce1e699;
+  transition: background .18s, color .18s;
+}
+.login-btn:hover { background: var(--amarillo); color: var(--gris);}
+.hero-section {
+  width: 100vw;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  min-height: 640px;
+  position: relative;
+  background: var(--blanco);
+  overflow: hidden;
+}
+.hero-left {
+  flex: 1 1 46vw;
+  max-width: 50vw;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 25px;
-  margin-top: 25px;
+  padding-left: 8vw;
+  padding-top: 3vw;
+  z-index: 2;
+  min-width: 340px;
 }
-
-.rrss img {
-  width: 55px;
-  height: 55px;
-  object-fit: contain;
-  border-radius: 10px;
+.hero-left h1 {
+  font-family: 'Nunito', Arial, sans-serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1.06;
+  margin: 0 0 1vw 0;
+  letter-spacing: -2px;
+  color: #101010;
 }
-
-/* ================================
-   BOTONES DE STORE
-================================ */
+.hero-left .highlight { color: var(--celeste);}
+.hero-sub {
+  font-size: 1.12rem;
+  color: var(--gris-suave);
+  line-height: 1.45;
+  max-width: 430px;
+  margin-top: 0.8vw; margin-bottom: 2vw;
+  font-family: 'Nunito', Arial, sans-serif;
+  font-weight: 500;
+}
+.hero-cta-row { margin-bottom: 2vw; }
+.btn-primary {
+  background: var(--celeste);
+  color: var(--gris);
+  border-radius: 33px;
+  font-family: 'Nunito', Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1.13rem;
+  text-decoration: none;
+  border: none;
+  padding: 0.7em 2.3em;
+  box-shadow: 0 2px 12px -5px #5ce1e677;
+  transition: background 0.19s, transform .15s;
+  display: inline-block;
+  margin-top: 0.18em;
+  cursor: pointer;
+}
+.btn-primary:hover { background: var(--amarillo); color: var(--gris);}
+.store-row { display: flex; gap: 2vw; margin-bottom: 1.2vw;}
+/* ESTO DEBES PEGAR EN style.css */
 .store-row .store-btn img {
-  max-height: 140px;
-  width: auto;
-  border-radius: 18px;
-  box-shadow: none;
+  box-shadow: none; 
+  height: 140px !important; 
+  border-radius: 18px; 
+}
+.store-btn.store-xl { font-size: 1.12rem; }
+.store-btn:hover { filter: brightness(1.09);}
+.hashtags-row {
+  display: flex; gap: 1vw; margin-top: 7px;
+  font-family: 'Nunito', Arial, sans-serif; font-weight: 800; color: var(--celeste); font-size: 1.12em;
 }
 
-/* ================================
-   RESPONSIVE
-================================ */
+.hero-right {
+  flex: 1 1 54vw;
+  position: relative;
+  z-index: 1;
+  min-width: 330px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  background: none;
+}
+.hero-image {
+  position: absolute;
+  right: 0; top: 0;
+  width: 59vw;
+  height: 100vh;
+  min-height: 500px;
+  background: url('img/miraflores.jpg') center center/cover no-repeat;
+  clip-path: ellipse(73vw 97vw at 100% 50%);
+  border-bottom-left-radius: 41vw 52vw;
+  border-top-left-radius: 51vw 32vw;
+  z-index: 2;
+  box-shadow: -7px 0 31px -8px #5ce1e655;
+}
+
+.howto-section { background: #fffdf9;}
+.howto-steps {
+  display: flex; flex-wrap: wrap; gap: 2em; justify-content: space-between;
+}
+.howto-step {
+  flex: 1;
+  min-width: 220px;
+  max-width: 320px;
+  display: flex; flex-direction: column; align-items: center;
+  background: #f8fbff;
+  border-radius: 19px;
+  margin: 12px;
+  padding: 1.3em 1em;
+  box-shadow: 0 2.5px 13px -9px #5ce1e633;
+  transition: box-shadow .2s;
+}
+.howto-step img {
+  width: 90px; height: 90px;
+  object-fit: cover;
+  border-radius: 21px;
+  margin-bottom: .7em; box-shadow:0 2px 11px -8px #000;
+}
+.howto-step h3 { margin-bottom: .3em; color: var(--celeste);}
+.howto-step p { margin-top: .3em; color: #444;}
+.info-section { background: #fff; padding: 3vw 0;}
+.info-section.color1 { background: #f7ffff; }
+.info-section.color2 { background: #fff9f7; }
+.info-container { max-width: 1060px; margin: 0 auto; padding: 0 4vw;}
+.info-section h2,
+.testimonios-section h2 {
+  font-family: 'Nunito', Arial, sans-serif;
+  font-size: 2.1rem;
+  color: var(--rojo);
+  font-weight: 900;
+  margin-bottom: 1.2vw;
+  letter-spacing: -.5px;
+}
+.columnas {
+  display: flex; flex-wrap: wrap;
+  gap: 2vw;
+}
+.columnas > div {
+  flex: 1 1 240px;
+  background: #f9f9f9;
+  margin: 4px 12px 4px 0;
+  padding: 1.2em 1em 1.2em 1.2em;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px -8px #5ce1e622;
+  min-width: 175px;
+  font-family: 'Nunito', Arial, sans-serif;
+  display: flex; flex-direction: column; align-items: center;
+}
+/* --- IMÁGENES EN COLUMNAS (Movilidad y Conductores) --- */
+.img-circle {
+  width: 110px; 
+  height: 110px; 
+  border-radius: 55px; 
+  object-fit: cover;
+  margin-bottom: .7em;
+  box-shadow:0 2px 13px -9px #000;
+  border: 2.5px solid var(--celeste);
+}
+.columnas h3 {
+  margin-top: 0; margin-bottom: .2em;
+  color: var(--celeste);
+  font-family: 'Nunito', Arial, sans-serif; font-weight: 800; font-size: 1.03em;
+}
+.columnas p { color: #52525b;}
+.beneficios-list {
+  list-style: none; padding: 0; margin: 0 0 0 1vw; font-size: 1.08rem; font-family: 'Nunito', Arial, sans-serif; font-weight: 500;
+}
+.beneficios-list li {
+  margin-bottom: 1em;
+  padding-left: 1em;
+  text-indent: -1em;
+  line-height: 1.33;
+}
+/* --- Estilos para la sección de Beneficios con Imagen --- */
+
+/* Contenedor principal de las dos columnas */
+.beneficios-layout {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las columnas se apilen en pantallas pequeñas */
+  gap: 3vw; /* Espacio entre las columnas */
+  align-items: center; /* Centra verticalmente las columnas */
+  justify-content: center; /* Centra horizontalmente si hay espacio */
+  padding-top: 1.5vw; /* Pequeño espacio superior para separar del título */
+}
+
+/* Columna de la lista de beneficios */
+.beneficios-lista-columna {
+  flex: 1 1 45%; /* Ocupa al menos el 45% del ancho, se encoge si no hay espacio */
+  min-width: 300px; /* Ancho mínimo para la lista */
+  max-width: 600px; /* Ancho máximo para que no se extienda demasiado */
+}
+
+/* Columna de la imagen */
+.beneficios-imagen-columna {
+  flex: 1 1 45%; /* Ocupa al menos el 45% del ancho, se encoge si no hay espacio */
+  min-width: 300px; /* Ancho mínimo para la imagen */
+  max-width: 500px; /* Ancho máximo para la imagen */
+  display: flex; /* Para centrar la imagen dentro de su columna */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo para la imagen misma (bordes suaves y sombra) */
+.imagen-beneficios-estilo {
+  width: 100%; /* La imagen ocupa el 100% de su contenedor */
+  height: auto; /* Mantiene la proporción */
+  border-radius: 25px; /* Bordes suaves, ¡ajusta este valor si quieres más o menos! */
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+  display: block; /* Elimina espacio extra debajo de la imagen */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+}
+
+/* --- Responsive para pantallas más pequeñas --- */
 @media (max-width: 768px) {
   .beneficios-layout {
-    flex-direction: column;
-    gap: 5vw;
+    flex-direction: column; /* Apila las columnas en móviles */
+    gap: 5vw; /* Más espacio vertical entre la lista y la imagen */
   }
 
+  .beneficios-lista-columna,
+/* --- Ajustes para la sección de Beneficios con Imagen --- */
+
+/* Columna de la imagen */
+.beneficios-imagen-columna {
+  flex: 1 1 45%; 
+  min-width: 300px; 
+  max-width: 500px; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  /* IMPORTANTE: Añadir una altura fija o máxima para el contenedor si la imagen es el único contenido */
+  /* Si la imagen es muy ancha, esto la ayudará a no desbordarse */
+  height: 350px; /* <--- AJUSTE: Altura fija para el contenedor */
+  overflow: hidden; /* <--- OCULTA cualquier parte que se desborde */
+  border-radius: 25px; /* Para que el recorte sea suave con la imagen */
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2); /* La sombra ahora va al contenedor */
+}
+
+/* Estilo para la imagen misma */
+.imagen-beneficios-estilo {
+  width: 100%; 
+  height: 100%; /* <--- AJUSTE: La imagen ocupa el 100% de la altura de su padre */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+  display: block; 
+  /* Los bordes y la sombra ahora se aplican al contenedor para un mejor recorte */
+  border-radius: 0; /* <--- Eliminar aquí ya que el contenedor lo tiene */
+  box-shadow: none; /* <--- Eliminar aquí ya que el contenedor lo tiene */
+}
+
+/* --- Responsive para pantallas más pequeñas --- */
+@media (max-width: 768px) {
   .beneficios-imagen-columna {
-    max-width: 90%;
-    height: 350px;
-    overflow: hidden;
-    border-radius: 25px;
-  }
-
-  .imagen-beneficios-estilo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .store-row .store-btn img {
-    max-height: 90px;
+    height: 250px; /* <--- AJUSTE: Altura más pequeña en móviles */
+    max-width: 90%; /* Ajuste para que el contenedor no sea demasiado grande */
   }
 }
+.faq-section { background: #fff9ef;}
+.faq-list { list-style: none; margin: 0; padding: 0;}
+.faq-list li {
+  margin-bottom: 1em; border-left: 3px solid var(--celeste); padding-left: 1.2em;
+  background: #fafbfc; border-radius: 10px; padding-top: .68em; padding-bottom: .69em;
+}
 
+.stats-section {
+  background: #f8fdfe;
+  padding: 3vw 0;
+  border-bottom: 7px solid var(--celeste);
+}
+.stats-container {
+  max-width: 1140px; margin: 0 auto;
+  display: flex; justify-content: center; gap: 2vw; flex-wrap: wrap;
+}
+.stat-card {
+  display: flex; flex-direction: column; align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  min-width: 120px;
+  box-shadow: 0 3px 10px -6px #5ce1e620;
+  margin: 0.6vw 0;
+  padding: 1vw .7vw;
+}
+.stat-number {
+  font-family: 'Nunito', Arial, sans-serif; font-size: 2.05rem; color: var(--rojo); font-weight: 900;
+  margin-bottom: .16em; transition: color 0.4s;
+}
+.stat-caption {
+  font-size: 0.97em;
+  color: var(--gris-suave);
+  font-weight: 800;
+  background: var(--amarillo);
+  padding: .09em .57em;
+  border-radius: 4px;
+}
+/* Esto asegura que solo el NÚMERO dentro de la tarjeta esté oculto */
+.stat-card .stat-number {
+  height: 0; /* Oculta el número */
+  opacity: 0;
+  overflow: hidden;
+  transition: height 0.4s ease-out, opacity 0.4s ease-out; 
+}
+
+/* Esto asegura que la CARD tenga espacio visible para el texto */
+.stat-card {
+  /* ... (mantén tus estilos originales aquí) ... */
+  /* Asegúrate de que tenga un padding suficiente para mostrar el stat-caption */
+  padding: 1vw .7vw; /* Tu valor original */
+}
+
+/* Clase que MUESTRA el número al hacer clic */
+.stat-card.active .stat-number {
+  height: 2.05rem; /* El tamaño de fuente de tu número */
+  opacity: 1;
+}
+
+/* Testimonios */
+.testimonios-section {
+  background: #fff;
+  padding: 3vw 0 2.5vw 0;
+}
+.testimonios-carrusel {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  min-height: 230px;
+  display:flex; align-items:center; justify-content:center;
+}
+.testimonio {
+  width: 86%;
+  min-width: 210px;
+  margin: 0 auto;
+  text-align: center;
+  background: #f9fcff;
+  border-radius: 21px;
+  padding: 2vw 3vw 1vw 3vw;
+  box-shadow: 0 2.5px 15px -8px #5ce1e628;
+  animation: fadeIn 0.7s ease;
+  display: none;
+}
+.testimonio:first-child { display:block;}
+/* --- IMÁGENES DE TESTIMONIOS --- */
+.img-testimonio {
+  width: 100px; /* Tamaño del círculo: 100px */
+  height: 100px; /* Tamaño del círculo: 100px */
+  border-radius: 50px; /* La mitad del tamaño para ser perfectamente circular */
+  object-fit: cover; /* MUY IMPORTANTE: Recorta la imagen para que llene el espacio (100x100px) sin estirarse */
+  margin-bottom: 1em;
+  box-shadow:0 2px 13px -8px #000;
+  border: 2px solid var(--celeste);
+}
+
+.testimonio blockquote {
+  font-family: 'Nunito', Arial, sans-serif;
+  font-style: italic;
+  color: #505070;
+  font-size: 1.09rem;
+  margin: 0 0 .6em 0;
+}
+.autor-testimonio {
+  font-family: 'Nunito', Arial, sans-serif;
+  color: var(--rojo);
+  font-size: .97em;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  background: #f8f8ff;
+  color: #555;
+  border-top: 1px solid #e0e0e0;
+  font-size: 1rem;
+  padding: 0;
+  margin-top: 2vw;
+}
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2vw 4vw;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.6em;
+}
+.rrss a {margin-right: 7px; margin-top: 8px; display: inline-block;}
+/* --- ÍCONOS DE REDES SOCIALES EN EL FOOTER --- */
+.rrss img {
+  width: 32px; /* Tamaño final y correcto */
+  height: 32px; /* Tamaño final y correcto */
+  opacity: 0.82; 
+  transition: opacity .23s; 
+  border-radius: 7px;
+}
+.rrss img:hover { opacity: 1;}
+.footer-hashtags {
+  margin-top: 6px;
+  color: var(--celeste);
+  font-family: 'Nunito', Arial, sans-serif;
+  font-weight: 900;
+}
+.footer-right { font-size: .97em; color: #888; }
+
+/* Animaciones suaves (fade in up) */
+.fadein-up {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(.56,.02,.53,.99), transform 0.55s cubic-bezier(.56,.02,.53,.99);
+}
+.fadein-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes fadeIn {
+  from {opacity:0; transform: translateY(10px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+/* Responsive design */
+@media (max-width: 950px) {
+  .navbar-menu { gap: .75vw; font-size: .96rem; }
+  .hero-section { flex-direction: column;}
+  .hero-left, .hero-right { max-width: none; width: 100vw;}
+  .hero-left { align-items: flex-start; padding: 7vw 4vw 2vw 6vw; min-width: 0;}
+  .hero-right {
+    min-width: 250px;
+    height: 27vw;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  .hero-image {
+    position: static;
+    width: 100vw;
+    min-height: 140px;
+    height: 36vw;
+    clip-path: ellipse(90vw 90vw at 97% 50%);
+    border-radius: 0 0 1vw 12vw;
+  }
+  .stats-container { gap: 1vw; }
+  .footer-content { flex-direction: column; gap: 1em;}
+}
 @media (max-width: 700px) {
-  .img-testimonio {
-    width: 180px;
-  }
-  .rrss img {
-    width: 42px;
-    height: 42px;
-  }
+  .brand-name { font-size: 1.11rem;}
+  .hero-left h1 { font-size: 1.28rem;}
+  .hero-left { padding: 5vw 3vw 0 3vw;}
+  .hero-image { min-height: 65px;}
+  .store-btn img { height: 39px !important;}
+  .info-section h2, .testimonios-section h2 { font-size: 1.02rem;}
+  .howto-step img { width: 65px; height: 65px;}
 }
-
 @media (max-width: 500px) {
-  .rrss {
-    flex-direction: column;
-  }
+  .howto-steps { flex-direction: column; align-items: center;}
+  .columnas { flex-direction: column;}
+
+
 }
