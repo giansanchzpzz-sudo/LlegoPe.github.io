@@ -148,8 +148,8 @@ body { min-height: 100vh; }
 /* ESTO DEBES PEGAR EN style.css */
 .store-row .store-btn img {
   box-shadow: none; 
-  height: 90px !important; 
-  border-radius: 12px; 
+  height: 140px !important; 
+  border-radius: 18px; 
 }
 .store-btn.store-xl { font-size: 1.12rem; }
 .store-btn:hover { filter: brightness(1.09);}
