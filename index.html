@@ -1,145 +1,297 @@
-// script.js - Versión segura para GitHub Pages
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('LlegoPe - Inicializando aplicación...');
-    
-    // 1. Animaciones de entrada básicas
-    const fadeElements = document.querySelectorAll('.fadein-up');
-    fadeElements.forEach((el, i) => {
-        setTimeout(() => {
-            if (el && el.classList) {
-                el.classList.add('visible');
-            }
-        }, 120 + i * 120);
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>LlegoPe — Viaja Seguro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="LlegoPe — Viaja Seguro">
+  <meta property="og:image" content="img/logo.png">
+  <meta name="description" content="LlegoPe, movilidad urbana inteligente en Miraflores y Lima. #ViajaSeguro #LlegoPE">
+  <link rel="icon" href="img/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="main-header fadein-up">
+    <nav class="navbar">
+      <div class="navbar-left">
+        <img class="logo-lgpe" src="img/logo.png" alt="LlegoPe Logo">
+        <span class="brand-name">LlegoPe</span>
+      </div>
+      <ul class="navbar-menu">
+        <li><a href="#como-funciona">¿Cómo funciona?</a></li>
+        <li><a href="#para-ti">Usuarios</a></li>
+        <li><a href="#conductores">Conductores</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <a href="#" class="login-btn">Login</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="hero-section fadein-up">
+    <div class="hero-left">
+      <h1>
+        <span class="highlight">LlegoPe</span>,<br>
+        Viaja seguro
+      </h1>
+      <p class="hero-sub">
+        Tu app moderna y segura para moverte por Miraflores y Lima.<br>
+        Consulta rutas, ve conductores verificados y viaja tranquilo.<br>
+        ¡Únete a la movilidad urbana del futuro!
+      </p>
+      <div class="hero-cta-row">
+        <a class="btn-primary" href="#beneficios">Explora LlegoPe</a>
+      </div>
+      <div class="store-row">
+        <a class="store-btn store-xl" href="#"><img src="img/appstore.svg" alt="App Store"></a>
+        <a class="store-btn store-xl" href="#"><img src="img/googleplay.svg" alt="Google Play"></a>
+      </div>
+      <div class="hashtags-row">
+        <span>#ViajaSeguro</span>
+        <span>#LlegoPE</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-image" style="background-image:url('img/miraflores.jpg')"></div>
+    </div>
+  </main>
+
+  <!-- ¿Cómo funciona? Section -->
+  <section class="info-section howto-section fadein-up" id="como-funciona">
+    <div class="info-container">
+      <h2>¿Cómo funciona?</h2>
+      <div class="howto-steps">
+        <div class="howto-step">
+          <img src="img/celular-app.jpg" alt="App en el celular">
+          <h3>1. Abre la app y busca tu ruta</h3>
+          <p>Consulta rutas seguras y unidades cercanas con solo tocar la pantalla.</p>
+        </div>
+        <div class="howto-step">
+          <img src="img/conductor-sonriente.jpg" alt="Conductor verificado">
+          <h3>2. Elige tu viaje y conductor</h3>
+          <p>Visualiza información y reputación real antes de abordar tu opción más segura.</p>
+        </div>
+        <div class="howto-step">
+          <img src="img/usuario-feliz.jpg" alt="Viajero feliz">
+          <h3>3. Viaja tranquilo</h3>
+          <p>Recibe alertas instantáneas y comparte tu viaje con contactos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beneficios Section -->
+  <section class="info-section color1 fadein-up" id="beneficios">
+    <div class="info-container">
+      <h2>¿Por qué elegir LlegoPe?</h2>
+      <ul class="beneficios-list">
+        <li>🔥 Seguridad activa con alertas y reputación verificada.</li>
+        <li>📍 Consulta rutas inteligentes y unidades en tiempo real.</li>
+        <li>💬 Reporta incidentes y aporta a la mejora de la ciudad.</li>
+        <li>👥 Comunidad y calificación transparente.</li>
+        <li>🤝 Alianzas municipales y apoyo a la formalidad.</li>
+        <li>🔔 Notificaciones en situaciones de riesgo.</li>
+        <li>🇵🇪 App 100% peruana, hecha por universitarios.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Usuarios -->
+  <section class="info-section fadein-up" id="para-ti">
+    <div class="info-container">
+      <h2>Movilidad inteligente para ti</h2>
+      <div class="columnas">
+        <div>
+          <img src="img/usuario-feliz.jpg" alt="Usuario feliz" class="img-circle">
+          <h3>Viaja informado</h3>
+          <p>Encuentra la mejor ruta y conoce a tu conductor antes de subirte.</p>
+        </div>
+        <div>
+          <img src="img/bus-lima.jpg" alt="Transporte Lima" class="img-circle">
+          <h3>Participa y mejora</h3>
+          <p>Califica, reporta y haz que los trayectos sean cada vez más seguros.</p>
+        </div>
+        <div>
+          <img src="img/celular-app.jpg" alt="Celular con app" class="img-circle">
+          <h3>Tranquilidad total</h3>
+          <p>Comparte tu viaje y recibe alertas automáticas ante cualquier incidente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conductores -->
+  <section class="info-section color2 fadein-up" id="conductores">
+    <div class="info-container">
+      <h2>Ventajas para conductores</h2>
+      <div class="columnas">
+        <div>
+          <img src="img/conductor-sonriente.jpg" alt="Conductor sonriente" class="img-circle">
+          <h3>Más visibilidad</h3>
+          <p>Tu reputación y calificaciones te traerán más pasajeros.</p>
+        </div>
+        <div>
+          <img src="img/bus-lima.jpg" alt="Bus Lima" class="img-circle">
+          <h3>Formalízate</h3>
+          <p>Obtén el sello de conductor seguro y accede a más trayectos.</p>
+        </div>
+        <div>
+          <img src="img/celular-app.jpg" alt="Herramientas para conductor" class="img-circle">
+          <h3>Herramientas Pro</h3>
+          <p>Estadísticas, historial y soporte en ruta cuando lo necesites.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Estadísticas animadas -->
+  <section class="stats-section fadein-up" id="impacto">
+    <div class="stats-container">
+      <div class="stat-card">
+        <span class="stat-number" data-valor="20000000">0</span>
+        <span class="stat-caption">+ viajes diarios en Lima</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" data-valor="80000">0</span>
+        <span class="stat-caption">+ visitantes/día en Miraflores</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" data-valor="200000">0</span>
+        <span class="stat-caption">+ usuarios potenciales</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" data-valor="100">0</span>
+        <span class="stat-caption">+ incidentes resueltos</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios Section -->
+  <section class="testimonios-section fadein-up" id="testimonios">
+    <div class="info-container">
+      <h2>Testimonios reales</h2>
+      <div class="testimonios-carrusel">
+        <div class="testimonio">
+          <img src="img/usuario-feliz.jpg" alt="Usuario feliz" class="img-testimonio">
+          <blockquote>“Ahora sé que viajo seguro y puedo compartir el trayecto con mi familia.”</blockquote>
+          <span class="autor-testimonio">— Ana, Lima</span>
+        </div>
+        <div class="testimonio">
+          <img src="img/conductor-sonriente.jpg" alt="Conductor orgulloso" class="img-testimonio">
+          <blockquote>“Me ayudó a conseguir más clientes y mostrar mi reputación.”</blockquote>
+          <span class="autor-testimonio">— José, Conductor</span>
+        </div>
+        <div class="testimonio">
+          <img src="img/bus-lima.jpg" alt="Transporte" class="img-testimonio">
+          <blockquote>“Con LlegoPe encuentro rápido la mejor opción de transporte.”</blockquote>
+          <span class="autor-testimonio">— Marco, Miraflores</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="info-section faq-section fadein-up" id="faq">
+    <div class="info-container">
+      <h2>Preguntas Frecuentes</h2>
+      <ul class="faq-list">
+        <li>
+          <strong>¿LlegoPe es gratis?</strong>
+          <p>Sí, puedes usar la app de forma gratuita. Las funciones premium están disponibles para quienes lo deseen.</p>
+        </li>
+        <li>
+          <strong>¿Dónde funciona?</strong>
+          <p>Piloto en Miraflores. Pronto más distritos de Lima Metropolitana.</p>
+        </li>
+        <li>
+          <strong>¿Quién puede ser conductor?</strong>
+          <p>Con licencia válida, SOAT y antecedentes verificados.</p>
+        </li>
+        <li>
+          <strong>¿Hay botón de emergencia?</strong>
+          <p>Sí, y comparte ubicación de inmediato con tus contactos y autoridades.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <footer id="contacto" class="fadein-up">
+    <div class="footer-content">
+      <div>
+        <h3>Contáctanos</h3>
+        <p>Team Bicholovers, Facultad de Ingeniería de Sistemas e Informática, UNMSM</p>
+        <p>Email: <a href="mailto:contactollegope@gmail.com">contactollegope@gmail.com</a></p>
+        <div class="rrss">
+          <a href="#"><img src="img/ig.svg" alt="Instagram"></a>
+          <a href="#"><img src="img/tiktok.svg" alt="TikTok"></a>
+          <a href="#"><img src="img/fb.svg" alt="Facebook"></a>
+        </div>
+        <div class="footer-hashtags">
+          #ViajaSeguro #LlegoPE
+        </div>
+      </div>
+      <div class="footer-right">
+        <span>© 2025 LlegoPe - Todos los derechos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Animaciones: aparición y testimonios (puedes mejorarlas con más JS si lo deseas) -->
+  <script>
+    // Fade in animación
+    document.addEventListener("DOMContentLoaded", function() {
+      let toFade = document.querySelectorAll('.fadein-up');
+      toFade.forEach(function(el, i){
+        setTimeout(()=>el.classList.add('visible'), 120 + i*120);
+      });
     });
-
-    // 2. Estadísticas simples (sin Intersection Observer)
-    setupSimpleStatistics();
-    
-    // 3. Carrusel básico
-    setupSimpleTestimonials();
-    
-    // 4. Smooth scroll solo si los elementos existen
-    setupSafeSmoothScroll();
-    
-    console.log('LlegoPe - Aplicación inicializada correctamente');
-});
-
-function setupSimpleStatistics() {
-    const statNumbers = document.querySelectorAll('.stat-number');
-    
-    // Animación simple después de un delay
-    setTimeout(() => {
-        statNumbers.forEach((numberEl, index) => {
-            if (numberEl) {
-                const target = parseInt(numberEl.getAttribute('data-valor'), 10);
-                if (!isNaN(target)) {
-                    // Pequeño delay escalonado
-                    setTimeout(() => {
-                        animateSimpleCounter(numberEl, target, 1500);
-                    }, index * 400);
-                }
-            }
-        });
-    }, 1000);
-}
-
-function animateSimpleCounter(element, target, duration = 1500) {
-    if (!element) return;
-    
-    let current = 0;
-    const steps = 60; // Número de pasos
-    const increment = target / steps;
-    const stepTime = duration / steps;
-    const isLarge = target > 10000;
-    
-    let step = 0;
-    const timer = setInterval(() => {
+    // Estadísticas
+    function animateNumber(el, target, duracion = 2200) {
+      let start = 0;
+      const isLarge = target > 10000;
+      let increment = Math.ceil(target / (duracion/18));
+      let current = 0;
+      function update() {
         current += increment;
-        step++;
-        
-        if (step >= steps) {
-            current = target;
-            clearInterval(timer);
+        if (current > target) current = target;
+        el.textContent = isLarge ? Math.floor(current).toLocaleString('es-PE') : current;
+        if (current < target) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = isLarge ? target.toLocaleString('es-PE') : target;
         }
-        
-        element.textContent = isLarge ? 
-            Math.floor(current).toLocaleString('es-PE') : 
-            Math.floor(current);
-    }, stepTime);
-}
-
-function setupSimpleTestimonials() {
-    const testimonios = document.querySelectorAll('.testimonio');
-    
-    // Solo si hay más de un testimonio
-    if (!testimonios || testimonios.length <= 1) {
-        console.log('Solo hay un testimonio o ninguno');
-        return;
+      }
+      update();
     }
-    
-    let currentIndex = 0;
-    
-    // Función para mostrar testimonio
-    function showTestimonio(index) {
-        testimonios.forEach((t, i) => {
-            if (t.style) {
-                t.style.display = i === index ? 'block' : 'none';
-            }
-        });
-    }
-    
-    // Inicializar mostrando el primero
-    showTestimonio(currentIndex);
-    
-    // Cambiar cada 5 segundos
-    setInterval(() => {
-        currentIndex = (currentIndex + 1) % testimonios.length;
-        showTestimonio(currentIndex);
-    }, 5000);
-}
-
-function setupSafeSmoothScroll() {
-    const navLinks = document.querySelectorAll('a[href^="#"]');
-    
-    navLinks.forEach(anchor => {
-        if (anchor) {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                
-                // Solo procesar enlaces internos que no sean # solo
-                if (targetId && targetId !== '#' && targetId.startsWith('#')) {
-                    e.preventDefault();
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        // Scroll suave nativo
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-                // Los enlaces externos (redes sociales) se manejan normalmente
-            });
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.stat-number').forEach(function(el) {
+        let objetivo = parseInt(el.getAttribute('data-valor'), 10);
+        if (!isNaN(objetivo)) {
+          animateNumber(el, objetivo, 2100 + Math.random() * 700);
         }
+      });
     });
-}
-
-// Manejo de errores mejorado
-function handleImageErrors() {
-    document.querySelectorAll('img').forEach(img => {
-        if (img) {
-            img.addEventListener('error', function() {
-                console.warn('Error cargando imagen:', this.src);
-                // No ocultar la imagen, solo mostrar advertencia
-            });
-            
-            img.addEventListener('load', function() {
-                console.log('Imagen cargada correctamente:', this.src);
-            });
-        }
+    // Testimonios animados automáticos
+    document.addEventListener("DOMContentLoaded", function() {
+      const carrusel = document.querySelector('.testimonios-carrusel');
+      const testimonios = document.querySelectorAll('.testimonio');
+      if(!carrusel || testimonios.length<2) return;
+      let index = 0;
+      function showTestimonio(idx) {
+        testimonios.forEach((e,i)=>e.style.display = (i === idx ? 'block' : 'none'));
+      }
+      showTestimonio(index);
+      setInterval(function(){
+        index = (index+1) % testimonios.length;
+        showTestimonio(index);
+      }, 4600);
     });
-}
-
-// Llamar al manejo de errores
-handleImageErrors();
+  </script>
+</body>
+</html>
