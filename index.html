@@ -89,9 +89,7 @@
   <section class="info-section color1 fadein-up" id="beneficios">
     <div class="info-container">
       <h2>¿Por qué elegir LlegoPe?</h2>
-  </script>
-</body>
-</html>
+    
       <div class="beneficios-layout"> 
       
         <div class="beneficios-lista-columna">
@@ -244,6 +242,7 @@
       </div>
     </div>
   </footer>
+
   <!-- Animaciones: aparición y testimonios (puedes mejorarlas con más JS si lo deseas) -->
   <script>
     // Fade in animación
@@ -252,18 +251,25 @@
       toFade.forEach(function(el, i){
         setTimeout(()=>el.classList.add('visible'), 120 + i*120);
       });
-      // Estadísticas
+    });
+    // Estadísticas
     function animateNumber(el, target, duracion = 2200) {
       let start = 0;
       const isLarge = target > 10000;
       let increment = Math.ceil(target / (duracion/18));
       let current = 0;
       function update() {
+        current += increment;
+        if (current > target) current = target;
         el.textContent = isLarge ? Math.floor(current).toLocaleString('es-PE') : current;
+        if (current < target) {
           requestAnimationFrame(update);
+        } else {
           el.textContent = isLarge ? target.toLocaleString('es-PE') : target;
+        }
       }
       update();
+    }
    
     // Función para mostrar/ocultar el número al hacer clic
     document.addEventListener("DOMContentLoaded", function() {
@@ -271,8 +277,10 @@
 
       statCards.forEach(card => {
         // Añadir un evento de clic a cada tarjeta
+        card.addEventListener('click', function() {
           // Toggle: si tiene la clase 'active', la quita; si no la tiene, la pone.
           this.classList.toggle('active');
+
           // (Opcional) Si la animamos, debemos re-animar el conteo
           if (this.classList.contains('active')) {
               // Si el usuario hace clic y la activa, forzamos la animación
@@ -284,7 +292,9 @@
                  animateNumber(numberEl, target, 1500); // 1.5s de duración
               }
           }
+        });
       });
+    });
     document.addEventListener('DOMContentLoaded', function() {
         // Esto anima los números de las estadísticas al cargar la página
         document.querySelectorAll('.stat-number').forEach(function(el) {
@@ -292,22 +302,9 @@
             if (!isNaN(objetivo)) {
                 // Un pequeño retraso para que no animen todos a la vez
                 setTimeout(() => animateNumber(el, objetivo, 2100 + Math.random() * 700), 100); 
-      });    
-    // Testimonios animados automáticos
-    document.addEventListener("DOMContentLoaded", function() {
-      const carrusel = document.querySelector('.testimonios-carrusel');
-      const testimonios = document.querySelectorAll('.testimonio');
-      if(!carrusel || testimonios.length<2) return;
-      let index = 0;
-      function showTestimonio(idx) {
-        testimonios.forEach((e,i)=>e.style.display = (i === idx ? 'block' : 'none'));
-      }
-      showTestimonio(index);
-      setInterval(function(){
-        index = (index+1) % testimonios.length;
-        showTestimonio(index);
-      }, 4600);
-       });    
+            }
+        });
+    });    
     // Testimonios animados automáticos
     document.addEventListener("DOMContentLoaded", function() {
       const carrusel = document.querySelector('.testimonios-carrusel');
@@ -326,6 +323,3 @@
   </script>
 </body>
 </html>
-
-
-  
