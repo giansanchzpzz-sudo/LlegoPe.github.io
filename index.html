@@ -8,43 +8,48 @@
   <meta property="og:image" content="img/logo.png">
   <meta name="description" content="LlegoPe, movilidad urbana inteligente en Miraflores y Lima. #ViajaSeguro #LlegoPE">
   <link rel="icon" href="img/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Navigation -->
-  <header class="main-header">
+  <!-- Top Navigation -->
+  <header class="main-header fadein-up">
     <nav class="navbar">
       <div class="navbar-left">
-        <img class="logo-lgpe" src="img/logo.png" alt="LlegoPe Logo" />
+        <img class="logo-lgpe" src="img/logo.png" alt="LlegoPe Logo">
         <span class="brand-name">LlegoPe</span>
       </div>
       <ul class="navbar-menu">
-        <li><a href="#para-ti">Para ti</a></li>
+        <li><a href="#como-funciona">¿Cómo funciona?</a></li>
+        <li><a href="#para-ti">Usuarios</a></li>
         <li><a href="#conductores">Conductores</a></li>
-        <li><a href="#municipios">Municipios</a></li>
         <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
       <a href="#" class="login-btn">Login</a>
     </nav>
   </header>
-  <!-- Hero Split Layout -->
-  <main class="hero-section">
+
+  <!-- Hero Section -->
+  <main class="hero-section fadein-up">
     <div class="hero-left">
-      <h1>LlegoPe,<br>
-        <span class="highlight">Viaja seguro</span>
+      <h1>
+        <span class="highlight">LlegoPe</span>,<br>
+        Viaja seguro
       </h1>
       <p class="hero-sub">
-        La plataforma inteligente para moverte seguro en Miraflores y Lima. Consulta rutas, reputación de conductores y disfruta el viaje. ¡Únete hoy mismo y sé parte de la movilidad urbana del futuro!
+        Tu app moderna y segura para moverte por Miraflores y Lima.<br>
+        Consulta rutas, ve conductores verificados y viaja tranquilo.<br>
+        ¡Únete a la movilidad urbana del futuro!
       </p>
       <div class="hero-cta-row">
         <a class="btn-primary" href="#beneficios">Explora LlegoPe</a>
       </div>
-      <div class="store-row" id="descarga">
-        <a class="store-btn" href="#"><img src="img/appstore.svg" alt="App Store"></a>
-        <a class="store-btn" href="#"><img src="img/googleplay.svg" alt="Google Play"></a>
+      <div class="store-row">
+        <a class="store-btn store-xl" href="#"><img src="img/appstore.svg" alt="App Store"></a>
+        <a class="store-btn store-xl" href="#"><img src="img/googleplay.svg" alt="Google Play"></a>
       </div>
       <div class="hashtags-row">
         <span>#ViajaSeguro</span>
@@ -52,86 +57,100 @@
       </div>
     </div>
     <div class="hero-right">
-      <div class="hero-image"></div>
+      <div class="hero-image" style="background-image:url('img/miraflores.jpg')"></div>
     </div>
   </main>
+
+  <!-- ¿Cómo funciona? Section -->
+  <section class="info-section howto-section fadein-up" id="como-funciona">
+    <div class="info-container">
+      <h2>¿Cómo funciona?</h2>
+      <div class="howto-steps">
+        <div class="howto-step">
+          <img src="img/celular-app.jpg" alt="App en el celular">
+          <h3>1. Abre la app y busca tu ruta</h3>
+          <p>Consulta rutas seguras y unidades cercanas con solo tocar la pantalla.</p>
+        </div>
+        <div class="howto-step">
+          <img src="img/conductor-sonriente.jpg" alt="Conductor verificado">
+          <h3>2. Elige tu viaje y conductor</h3>
+          <p>Visualiza información y reputación real antes de abordar tu opción más segura.</p>
+        </div>
+        <div class="howto-step">
+          <img src="img/usuario-feliz.jpg" alt="Viajero feliz">
+          <h3>3. Viaja tranquilo</h3>
+          <p>Recibe alertas instantáneas y comparte tu viaje con contactos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Beneficios Section -->
-  <section class="info-section color1" id="beneficios">
+  <section class="info-section color1 fadein-up" id="beneficios">
     <div class="info-container">
       <h2>¿Por qué elegir LlegoPe?</h2>
       <ul class="beneficios-list">
-        <li>🔥 Seguridad activa con alertas y reputación de conductores verificadas.</li>
-        <li>📍 Consulta rutas inteligentes y unidades cercanas en tiempo real.</li>
-        <li>💬 Reporta incidentes y contribuye a la movilidad de tu ciudad.</li>
-        <li>👥 Comunidad colaborativa y sistema de calificación transparente.</li>
-        <li>🤝 Alianzas con municipalidades y entidades para un transporte formal y moderno.</li>
-        <li>🔔 Notificaciones instantáneas en situaciones de riesgo.</li>
-        <li>🕺 App 100% peruana, creada por universitarios para la comunidad.</li>
+        <li>🔥 Seguridad activa con alertas y reputación verificada.</li>
+        <li>📍 Consulta rutas inteligentes y unidades en tiempo real.</li>
+        <li>💬 Reporta incidentes y aporta a la mejora de la ciudad.</li>
+        <li>👥 Comunidad y calificación transparente.</li>
+        <li>🤝 Alianzas municipales y apoyo a la formalidad.</li>
+        <li>🔔 Notificaciones en situaciones de riesgo.</li>
+        <li>🇵🇪 App 100% peruana, hecha por universitarios.</li>
       </ul>
     </div>
   </section>
-  <!-- Para Ti / Usuarios -->
-  <section class="info-section" id="para-ti">
+
+  <!-- Usuarios -->
+  <section class="info-section fadein-up" id="para-ti">
     <div class="info-container">
-      <h2>Movilidad Inteligente para Ti</h2>
+      <h2>Movilidad inteligente para ti</h2>
       <div class="columnas">
         <div>
-          <h3>Viaja Informado</h3>
-          <p>Visualiza rutas, horarios y trayectos en tiempo real, conoce a tu conductor y elige siempre la opción más segura para llegar a tu destino.</p>
+          <img src="img/usuario-feliz.jpg" alt="Usuario feliz" class="img-circle">
+          <h3>Viaja informado</h3>
+          <p>Encuentra la mejor ruta y conoce a tu conductor antes de subirte.</p>
         </div>
         <div>
-          <h3>Participa y Mejora</h3>
-          <p>Califica conductores, reporta eventos y ayuda a que el transporte público sea más seguro, eficiente y responsable.</p>
+          <img src="img/bus-lima.jpg" alt="Transporte Lima" class="img-circle">
+          <h3>Participa y mejora</h3>
+          <p>Califica, reporta y haz que los trayectos sean cada vez más seguros.</p>
         </div>
         <div>
-          <h3>Tranquilidad en tu Viaje</h3>
-          <p>Recibe alertas en caso de incidentes y comparte tu ubicación con quienes tú elijas, todo desde tu app.</p>
+          <img src="img/celular-app.jpg" alt="Celular con app" class="img-circle">
+          <h3>Tranquilidad total</h3>
+          <p>Comparte tu viaje y recibe alertas automáticas ante cualquier incidente.</p>
         </div>
       </div>
     </div>
   </section>
+
   <!-- Conductores -->
-  <section class="info-section color2" id="conductores">
+  <section class="info-section color2 fadein-up" id="conductores">
     <div class="info-container">
-      <h2>Ventajas para Conductores</h2>
+      <h2>Ventajas para conductores</h2>
       <div class="columnas">
         <div>
-          <h3>Gana Visibilidad</h3>
-          <p>Los pasajeros verán tu perfil, reputación y calificaciones reales. Si prestas un excelente servicio, lo notarán.</p>
+          <img src="img/conductor-sonriente.jpg" alt="Conductor sonriente" class="img-circle">
+          <h3>Más visibilidad</h3>
+          <p>Tu reputación y calificaciones te traerán más pasajeros.</p>
         </div>
         <div>
-          <h3>Formalízate y Crece</h3>
-          <p>Obtén el sello de conductor seguro y accede a más usuarios y mejores trayectos en tu ciudad.</p>
+          <img src="img/bus-lima.jpg" alt="Bus Lima" class="img-circle">
+          <h3>Formalízate</h3>
+          <p>Obtén el sello de conductor seguro y accede a más trayectos.</p>
         </div>
         <div>
-          <h3>Herramientas Inteligentes</h3>
-          <p>Panel de estadísticas, historial de viajes y asistencia directa para cualquier incidente en ruta.</p>
+          <img src="img/celular-app.jpg" alt="Herramientas para conductor" class="img-circle">
+          <h3>Herramientas Pro</h3>
+          <p>Estadísticas, historial y soporte en ruta cuando lo necesites.</p>
         </div>
       </div>
     </div>
   </section>
-  <!-- Municipios -->
-  <section class="info-section" id="municipios">
-    <div class="info-container">
-      <h2>Aliados Municipales y Comunidad</h2>
-      <div class="columnas">
-        <div>
-          <h3>Gestión Urbana Moderna</h3>
-          <p>Las municipalidades acceden a datos en tiempo real sobre movilidad, incidentes y rutas para tomar mejores decisiones.</p>
-        </div>
-        <div>
-          <h3>Alertas Directas</h3>
-          <p>Recibe y canaliza reportes ciudadanos al instante, mejorando la respuesta y la seguridad de la ciudad.</p>
-        </div>
-        <div>
-          <h3>Colaboración Real</h3>
-          <p>Trabajamos junto a autoridades para construir juntos ciudades más conectadas, seguras y sostenibles.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Estadísticas animadas (Impacto) -->
-  <section class="stats-section color3" id="impacto">
+
+  <!-- Estadísticas animadas -->
+  <section class="stats-section fadein-up" id="impacto">
     <div class="stats-container">
       <div class="stat-card">
         <span class="stat-number" data-valor="20000000">0</span>
@@ -149,42 +168,64 @@
         <span class="stat-number" data-valor="100">0</span>
         <span class="stat-caption">+ incidentes resueltos</span>
       </div>
-      <div class="stat-card">
-        <span class="stat-number" data-valor="30">0</span>
-        <span class="stat-caption">Choferes verificados</span>
+    </div>
+  </section>
+
+  <!-- Testimonios Section -->
+  <section class="testimonios-section fadein-up" id="testimonios">
+    <div class="info-container">
+      <h2>Testimonios reales</h2>
+      <div class="testimonios-carrusel">
+        <div class="testimonio">
+          <img src="img/usuario-feliz.jpg" alt="Usuario feliz" class="img-testimonio">
+          <blockquote>“Ahora sé que viajo seguro y puedo compartir el trayecto con mi familia.”</blockquote>
+          <span class="autor-testimonio">— Ana, Lima</span>
+        </div>
+        <div class="testimonio">
+          <img src="img/conductor-sonriente.jpg" alt="Conductor orgulloso" class="img-testimonio">
+          <blockquote>“Me ayudó a conseguir más clientes y mostrar mi reputación.”</blockquote>
+          <span class="autor-testimonio">— José, Conductor</span>
+        </div>
+        <div class="testimonio">
+          <img src="img/bus-lima.jpg" alt="Transporte" class="img-testimonio">
+          <blockquote>“Con LlegoPe encuentro rápido la mejor opción de transporte.”</blockquote>
+          <span class="autor-testimonio">— Marco, Miraflores</span>
+        </div>
       </div>
     </div>
   </section>
+
   <!-- FAQ -->
-  <section class="info-section faq-section" id="faq">
+  <section class="info-section faq-section fadein-up" id="faq">
     <div class="info-container">
       <h2>Preguntas Frecuentes</h2>
       <ul class="faq-list">
         <li>
           <strong>¿LlegoPe es gratis?</strong>
-          <p>Sí, puedes usar la app de forma gratuita. Si quieres funciones premium, como alertas avanzadas o historial de rutas, puedes suscribirte a un plan económico.</p>
+          <p>Sí, puedes usar la app de forma gratuita. Las funciones premium están disponibles para quienes lo deseen.</p>
         </li>
         <li>
-          <strong>¿En qué distritos funciona LlegoPe?</strong>
-          <p>Actualmente, la app está en piloto en Miraflores, pero pronto llegará a otros distritos de Lima Metropolitana.</p>
+          <strong>¿Dónde funciona?</strong>
+          <p>Piloto en Miraflores. Pronto más distritos de Lima Metropolitana.</p>
         </li>
         <li>
           <strong>¿Quién puede ser conductor?</strong>
-          <p>Cualquier persona con licencia válida, SOAT y antecedentes verificables puede convertirse en conductor LlegoPe y acceder a más oportunidades.</p>
+          <p>Con licencia válida, SOAT y antecedentes verificados.</p>
         </li>
         <li>
-          <strong>¿Qué hago si tengo una emergencia?</strong>
-          <p>Puedes utilizar el botón de emergencia en la app para compartir tu ubicación con contactos de confianza y autoridades locales.</p>
+          <strong>¿Hay botón de emergencia?</strong>
+          <p>Sí, y comparte ubicación de inmediato con tus contactos y autoridades.</p>
         </li>
       </ul>
     </div>
   </section>
+
   <!-- Contacto -->
-  <footer id="contacto">
+  <footer id="contacto" class="fadein-up">
     <div class="footer-content">
       <div>
         <h3>Contáctanos</h3>
-        <p>Equipo: Team Bicholovers, Facultad de Ingeniería de Sistemas e Informática, UNMSM</p>
+        <p>Team Bicholovers, Facultad de Ingeniería de Sistemas e Informática, UNMSM</p>
         <p>Email: <a href="mailto:contactollegope@gmail.com">contactollegope@gmail.com</a></p>
         <div class="rrss">
           <a href="#"><img src="img/ig.svg" alt="Instagram"></a>
@@ -200,8 +241,17 @@
       </div>
     </div>
   </footer>
+
+  <!-- Animaciones: aparición y testimonios (puedes mejorarlas con más JS si lo deseas) -->
   <script>
-    // Animación de cifras
+    // Fade in animación
+    document.addEventListener("DOMContentLoaded", function() {
+      let toFade = document.querySelectorAll('.fadein-up');
+      toFade.forEach(function(el, i){
+        setTimeout(()=>el.classList.add('visible'), 120 + i*120);
+      });
+    });
+    // Estadísticas
     function animateNumber(el, target, duracion = 2200) {
       let start = 0;
       const isLarge = target > 10000;
@@ -226,6 +276,21 @@
           animateNumber(el, objetivo, 2100 + Math.random() * 700);
         }
       });
+    });
+    // Testimonios animados automáticos
+    document.addEventListener("DOMContentLoaded", function() {
+      const carrusel = document.querySelector('.testimonios-carrusel');
+      const testimonios = document.querySelectorAll('.testimonio');
+      if(!carrusel || testimonios.length<2) return;
+      let index = 0;
+      function showTestimonio(idx) {
+        testimonios.forEach((e,i)=>e.style.display = (i === idx ? 'block' : 'none'));
+      }
+      showTestimonio(index);
+      setInterval(function(){
+        index = (index+1) % testimonios.length;
+        showTestimonio(index);
+      }, 4600);
     });
   </script>
 </body>
