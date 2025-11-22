@@ -1,146 +1,111 @@
+// script.js - Versión optimizada para GitHub Pages
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Animación de aparición de elementos
-    animateFadeIn();
-    
-    // 2. Configurar estadísticas (solo una versión)
-    setupStatistics();
-    
-    // 3. Configurar carrusel de testimonios
-    setupTestimonials();
+    initApp();
 });
 
-// Función para animación de entrada
-function animateFadeIn() {
-    const elementsToFade = document.querySelectorAll('.fadein-up');
-    elementsToFade.forEach(function(element, index) {
-        setTimeout(() => {
-            element.classList.add('visible');
-        }, 120 + index * 120);
+function initApp() {
+    // 1. Animaciones de entrada
+    const fadeElements = document.querySelectorAll('.fadein-up');
+    fadeElements.forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), 120 + i * 120);
     });
+
+    // 2. Estadísticas con Intersection Observer
+    setupStatistics();
+    
+    // 3. Carrusel de testimonios
+    setupTestimonials();
+    
+    // 4. Smooth scroll para navegación
+    setupSmoothScroll();
 }
 
-// Función para animar números
+function setupStatistics() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    // Usar Intersection Observer para animar cuando son visibles
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const numberEl = entry.target;
+                const target = parseInt(numberEl.getAttribute('data-valor'), 10);
+                
+                if (!isNaN(target)) {
+                    animateCounter(numberEl, target, 2000);
+                }
+                observer.unobserve(numberEl);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    statNumbers.forEach(number => observer.observe(number));
+}
+
 function animateCounter(element, target, duration = 2000) {
-    let start = 0;
-    const isLarge = target > 10000;
-    const increment = target / (duration / 16); // 60fps
     let current = 0;
+    const increment = target / (duration / 60); // 60fps
+    const isLarge = target > 10000;
     
     function update() {
         current += increment;
-        if (current > target) current = target;
+        if (current >= target) {
+            element.textContent = isLarge ? target.toLocaleString('es-PE') : target;
+            return;
+        }
         
         element.textContent = isLarge ? 
             Math.floor(current).toLocaleString('es-PE') : 
             Math.floor(current);
-            
-        if (current < target) {
-            requestAnimationFrame(update);
-        } else {
-            element.textContent = isLarge ? 
-                target.toLocaleString('es-PE') : 
-                target.toString();
-        }
+        
+        requestAnimationFrame(update);
     }
     update();
 }
 
-// Configuración de estadísticas - VERSIÓN MEJORADA
-function setupStatistics() {
-    const statCards = document.querySelectorAll('.stat-card');
-    
-    // Opción 1: Animación automática al cargar (RECOMENDADA)
-    statCards.forEach((card, index) => {
-        const numberElement = card.querySelector('.stat-number');
-        const targetValue = parseInt(numberElement.getAttribute('data-valor'), 10);
-        
-        if (!isNaN(targetValue)) {
-            // Pequeño delay para animación escalonada
-            setTimeout(() => {
-                animateCounter(numberElement, targetValue, 1800 + Math.random() * 800);
-            }, 500 + index * 300);
-        }
-    });
-
-    // O bien, Opción 2: Animación al hacer clic (si prefieres interactividad)
-    /*
-    statCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const numberElement = this.querySelector('.stat-number');
-            const targetValue = parseInt(numberElement.getAttribute('data-valor'), 10);
-            
-            if (!isNaN(targetValue)) {
-                // Reiniciar a 0 antes de animar
-                numberElement.textContent = '0';
-                animateCounter(numberElement, targetValue, 1500);
-            }
-        });
-    });
-    */
-}
-
-// Configuración del carrusel de testimonios
 function setupTestimonials() {
-    const carousel = document.querySelector('.testimonios-carrusel');
-    const testimonials = document.querySelectorAll('.testimonio');
-    
-    // Si no hay carrusel o solo un testimonio, salir
-    if (!carousel || testimonials.length < 2) return;
+    const testimonios = document.querySelectorAll('.testimonio');
+    if (testimonios.length <= 1) return;
     
     let currentIndex = 0;
+    let intervalId;
     
-    // Función para mostrar testimonio específico
-    function showTestimonial(index) {
-        // Ocultar todos
-        testimonials.forEach(testimonial => {
-            testimonial.style.display = 'none';
-            testimonial.style.opacity = '0';
-        });
-        
-        // Mostrar el actual con animación
-        if (testimonials[index]) {
-            testimonials[index].style.display = 'block';
-            setTimeout(() => {
-                testimonials[index].style.opacity = '1';
-                testimonials[index].style.transition = 'opacity 0.5s ease';
-            }, 50);
-        }
+    function showTestimonio(index) {
+        testimonios.forEach(t => t.style.display = 'none');
+        testimonios[index].style.display = 'block';
     }
     
-    // Función para siguiente testimonio
-    function nextTestimonial() {
-        currentIndex = (currentIndex + 1) % testimonials.length;
-        showTestimonial(currentIndex);
+    function startCarousel() {
+        intervalId = setInterval(() => {
+            currentIndex = (currentIndex + 1) % testimonios.length;
+            showTestimonio(currentIndex);
+        }, 5000);
     }
     
-    // Inicializar mostrando el primero
-    showTestimonial(currentIndex);
+    function stopCarousel() {
+        clearInterval(intervalId);
+    }
     
-    // Configurar intervalo automático
-    const carouselInterval = setInterval(nextTestimonial, 5000);
+    // Iniciar carrusel
+    showTestimonio(currentIndex);
+    startCarousel();
     
-    // Opcional: Pausar al hacer hover (mejora UX)
-    carousel.addEventListener('mouseenter', () => {
-        clearInterval(carouselInterval);
-    });
-    
-    carousel.addEventListener('mouseleave', () => {
-        // No reiniciamos el intervalo para evitar múltiples intervalos
-        // En una implementación real, usaríamos una variable global
-    });
+    // Pausar al interactuar
+    const carrusel = document.querySelector('.testimonios-carrusel');
+    if (carrusel) {
+        carrusel.addEventListener('mouseenter', stopCarousel);
+        carrusel.addEventListener('mouseleave', startCarousel);
+    }
 }
 
-// OPCIONAL: Smooth scroll para enlaces de navegación
 function setupSmoothScroll() {
-    const navLinks = document.querySelectorAll('a[href^="#"]');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             
             const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+            if (targetId === '#') return;
             
+            const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 targetElement.scrollIntoView({
                     behavior: 'smooth',
@@ -151,5 +116,15 @@ function setupSmoothScroll() {
     });
 }
 
-// Llamar a smooth scroll si lo quieres agregar
-// setupSmoothScroll();
+// Manejo de errores para imágenes (útil para GitHub Pages)
+function handleImageErrors() {
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('error', function() {
+            console.warn('Error loading image:', this.src);
+            this.style.display = 'none';
+        });
+    });
+}
+
+// Llamar al manejo de errores de imágenes
+handleImageErrors();
