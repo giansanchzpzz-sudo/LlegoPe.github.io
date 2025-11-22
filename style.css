@@ -296,6 +296,22 @@ body { min-height: 100vh; }
   padding: .09em .57em;
   border-radius: 4px;
 }
+/* Nuevo CSS para ocultar el número por defecto */
+.stat-card .stat-number {
+  /* Establece la altura a 0 y oculta el contenido */
+  height: 0; 
+  opacity: 0;
+  overflow: hidden;
+  /* Transición suave para que la aparición sea animada */
+  transition: height 0.4s ease-out, opacity 0.4s ease-out; 
+}
+
+/* CLASE QUE SE AÑADIRÁ CON JAVASCRIPT AL HACER CLIC */
+.stat-card.active .stat-number {
+  /* Al hacer clic, le damos la altura real para mostrarlo */
+  height: 2.05rem; /* Ajusta este valor al tamaño de fuente de .stat-number */
+  opacity: 1;
+}
 
 /* Testimonios */
 .testimonios-section {
