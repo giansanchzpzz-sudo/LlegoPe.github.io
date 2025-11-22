@@ -234,15 +234,15 @@ body { min-height: 100vh; }
   font-family: 'Nunito', Arial, sans-serif;
   display: flex; flex-direction: column; align-items: center;
 }
-
+/* --- IMÁGENES EN COLUMNAS (Movilidad y Conductores) --- */
 .img-circle {
-  width: 110px; /* ¡NUEVO TAMAÑO! */
-  height: 110px; /* ¡NUEVO TAMAÑO! */
-  border-radius: 55px; /* La mitad del nuevo tamaño (110/2) */
-  object-fit: cover;
-  margin-bottom: .7em;
-  box-shadow:0 2px 13px -9px #000;
-  border: 2.5px solid var(--celeste);
+  width: 110px; 
+  height: 110px; 
+  border-radius: 55px; 
+  object-fit: cover;
+  margin-bottom: .7em;
+  box-shadow:0 2px 13px -9px #000;
+  border: 2.5px solid var(--celeste);
 }
 .columnas h3 {
   margin-top: 0; margin-bottom: .2em;
@@ -425,14 +425,15 @@ body { min-height: 100vh; }
   display: none;
 }
 .testimonio:first-child { display:block;}
+/* --- IMÁGENES DE TESTIMONIOS --- */
 .img-testimonio {
-  width: 100px;
-  height: 100px; 
-  border-radius: 50px; /* Hace que el recorte sea perfectamente circular */
-  object-fit: cover; /* Recorta la imagen para que llene el espacio (100x100px) sin estirarse */
-  margin-bottom: 1em;
-  box-shadow:0 2px 13px -8px #000;
-  border: 2px solid var(--celeste);
+  width: 100px; /* Tamaño del círculo: 100px */
+  height: 100px; /* Tamaño del círculo: 100px */
+  border-radius: 50px; /* La mitad del tamaño para ser perfectamente circular */
+  object-fit: cover; /* MUY IMPORTANTE: Recorta la imagen para que llene el espacio (100x100px) sin estirarse */
+  margin-bottom: 1em;
+  box-shadow:0 2px 13px -8px #000;
+  border: 2px solid var(--celeste);
 }
 
 .testimonio blockquote {
@@ -469,11 +470,12 @@ footer {
   gap: 1.6em;
 }
 .rrss a {margin-right: 7px; margin-top: 8px; display: inline-block;}
+/* --- ÍCONOS DE REDES SOCIALES EN EL FOOTER --- */
 .rrss img {
   width: 32px; /* Tamaño final y correcto */
   height: 32px; /* Tamaño final y correcto */
-  opacity: 0.82; 
-  transition: opacity .23s; 
+  opacity: 0.82; 
+  transition: opacity .23s; 
   border-radius: 7px;
 }
 .rrss img:hover { opacity: 1;}
