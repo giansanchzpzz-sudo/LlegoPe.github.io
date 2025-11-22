@@ -236,9 +236,9 @@ body { min-height: 100vh; }
 }
 
 .img-circle {
-  width: 70px;
-  height: 70px;
-  border-radius: 33px;
+  width: 110px; /* ¡NUEVO TAMAÑO! */
+  height: 110px; /* ¡NUEVO TAMAÑO! */
+  border-radius: 55px; /* La mitad del nuevo tamaño (110/2) */
   object-fit: cover;
   margin-bottom: .7em;
   box-shadow:0 2px 13px -9px #000;
