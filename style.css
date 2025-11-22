@@ -259,6 +259,63 @@ body { min-height: 100vh; }
   text-indent: -1em;
   line-height: 1.33;
 }
+/* --- Estilos para la sección de Beneficios con Imagen --- */
+
+/* Contenedor principal de las dos columnas */
+.beneficios-layout {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las columnas se apilen en pantallas pequeñas */
+  gap: 3vw; /* Espacio entre las columnas */
+  align-items: center; /* Centra verticalmente las columnas */
+  justify-content: center; /* Centra horizontalmente si hay espacio */
+  padding-top: 1.5vw; /* Pequeño espacio superior para separar del título */
+}
+
+/* Columna de la lista de beneficios */
+.beneficios-lista-columna {
+  flex: 1 1 45%; /* Ocupa al menos el 45% del ancho, se encoge si no hay espacio */
+  min-width: 300px; /* Ancho mínimo para la lista */
+  max-width: 600px; /* Ancho máximo para que no se extienda demasiado */
+}
+
+/* Columna de la imagen */
+.beneficios-imagen-columna {
+  flex: 1 1 45%; /* Ocupa al menos el 45% del ancho, se encoge si no hay espacio */
+  min-width: 300px; /* Ancho mínimo para la imagen */
+  max-width: 500px; /* Ancho máximo para la imagen */
+  display: flex; /* Para centrar la imagen dentro de su columna */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo para la imagen misma (bordes suaves y sombra) */
+.imagen-beneficios-estilo {
+  width: 100%; /* La imagen ocupa el 100% de su contenedor */
+  height: auto; /* Mantiene la proporción */
+  border-radius: 25px; /* Bordes suaves, ¡ajusta este valor si quieres más o menos! */
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+  display: block; /* Elimina espacio extra debajo de la imagen */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+}
+
+/* --- Responsive para pantallas más pequeñas --- */
+@media (max-width: 768px) {
+  .beneficios-layout {
+    flex-direction: column; /* Apila las columnas en móviles */
+    gap: 5vw; /* Más espacio vertical entre la lista y la imagen */
+  }
+
+  .beneficios-lista-columna,
+  .beneficios-imagen-columna {
+    flex: 1 1 100%; /* Ocupan todo el ancho disponible */
+    max-width: 100%; /* Sin límite de ancho en móviles */
+  }
+
+  .imagen-beneficios-estilo {
+    padding: 0 2vw; /* Pequeño padding para que la imagen no toque los bordes */
+    max-width: 90%; /* La imagen no ocupa el 100% del ancho para un mejor look */
+  }
+}
 .faq-section { background: #fff9ef;}
 .faq-list { list-style: none; margin: 0; padding: 0;}
 .faq-list li {
