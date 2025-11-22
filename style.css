@@ -538,5 +538,8 @@ footer {
   .howto-steps { flex-direction: column; align-items: center;}
   .columnas { flex-direction: column;}
 
-
+}
+footer .rrss img {
+  width: 45px !important;
+  height: 45px !important;
 }
