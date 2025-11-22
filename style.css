@@ -365,7 +365,13 @@ footer {
   gap: 1.6em;
 }
 .rrss a {margin-right: 7px; margin-top: 8px; display: inline-block;}
-.rrss img {width: 26px; height: 26px; opacity: 0.82; transition:opacity .23s; border-radius: 7px;}
+.rrss img {
+  /* Aumentar temporalmente el tamaño para asegurar la visibilidad */
+  width: 50px; 
+  height: 50px; 
+  opacity: 1; /* Asegurar que no sean transparentes */
+  /* ... resto del código ... */
+}
 .rrss img:hover { opacity: 1;}
 .footer-hashtags {
   margin-top: 6px;
