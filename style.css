@@ -145,11 +145,11 @@ body { min-height: 100vh; }
 }
 .btn-primary:hover { background: var(--amarillo); color: var(--gris);}
 .store-row { display: flex; gap: 2vw; margin-bottom: 1.2vw;}
-.store-btn img,
-.store-xl img {
-  height: 62px !important;
-  border-radius: 12px;
-  box-shadow: 0 1px 10px -3px #b3b3b3;
+/* ESTO DEBES PEGAR EN style.css */
+.store-row .store-btn img {
+  box-shadow: none; 
+  height: 90px !important; 
+  border-radius: 12px; 
 }
 .store-btn.store-xl { font-size: 1.12rem; }
 .store-btn:hover { filter: brightness(1.09);}
